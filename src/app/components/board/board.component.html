@@ -1,0 +1,37 @@
+<div class="board">
+  <div class="column">
+    <h2>A Fazer</h2>
+    <div *ngIf="tarefasAFazer.length === 0">Não há tarefas neste status</div>
+    <div *ngFor="let tarefa of tarefasAFazer">
+      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
+      <button (click)="avancarStatus(tarefa.id)">Avançar</button>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Em Andamento</h2>
+    <div *ngIf="tarefasEmAndamento.length === 0">Não há tarefas neste status</div>
+    <div *ngFor="let tarefa of tarefasEmAndamento">
+      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
+      <button (click)="avancarStatus(tarefa.id)">Avançar</button>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Feita</h2>
+    <div *ngIf="tarefasFeitas.length === 0">Não há tarefas neste status</div>
+    <div *ngFor="let tarefa of tarefasFeitas">
+      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
+    </div>
+  </div>
+
+  <div class="tarefa">
+    <h2>Criar Nova Tarefa</h2>
+    <input [(ngModel)]="descricao" placeholder="Descrição da tarefa" />
+    <select [(ngModel)]="categoria">
+      <option [value]="'Desenvolvimento'">Desenvolvimento</option>
+      <option [value]="'Inteligência Artificial'">Inteligência Artificial</option>
+    </select>
+    <button (click)="criarTarefa()">Adicionar</button>
+  </div>
+</div>

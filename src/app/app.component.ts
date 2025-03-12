@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.scss'
+  template: `
+
+  <app-board></app-board> 
+  <router-outlet />`
 })
 export class AppComponent {
-  title = 'gerenciador-de-tarefas';
 }
