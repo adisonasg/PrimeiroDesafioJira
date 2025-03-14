@@ -18,6 +18,10 @@ export class TarefaService {
       ...tarefa,
       autor: tarefa.categoria === Categoria.DESENVOLVIMENTO ? 'Camila' : 'Renata'
     }));
+    this.tarefas = this.tarefas.map(tarefa => {
+      tarefa.autor = tarefa.categoria === Categoria.DESENVOLVIMENTO ? 'Camila' : 'Renata';
+      return tarefa
+    })
   }
 
   getTarefas(): Tarefa[] {
@@ -36,12 +40,21 @@ export class TarefaService {
   }
 
   atualizarStatus(id: number) {
-    this.tarefas = this.tarefas.map(tarefa => {
-      if (tarefa.id === id) {
-        if (tarefa.status === Status.A_FAZER) return { ...tarefa, status: Status.EM_ANDAMENTO };
-        if (tarefa.status === Status.EM_ANDAMENTO) return { ...tarefa, status: Status.FEITA };
-      }
-      return tarefa;
-    });
+    var tarefa = this.tarefas.find(tarefa => tarefa.id == id)
+    
+      if (tarefa?.status === Status.A_FAZER)
+        tarefa.status = Status.EM_ANDAMENTO
+
+      if (tarefa?.status === Status.EM_ANDAMENTO)
+        tarefa.status = Status.FEITA
+      
+
+    // this.tarefas = this.tarefas.map(tarefa => {
+    //   if (tarefa.id === id) {
+    //     if (tarefa.status === Status.A_FAZER) return { ...tarefa, status: Status.EM_ANDAMENTO };
+    //     if (tarefa.status === Status.EM_ANDAMENTO) return { ...tarefa, status: Status.FEITA };
+    //   }
+    //   return tarefa;
+    // });
   }
 }
