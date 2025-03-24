@@ -1,0 +1,7 @@
+<h2>{{ titulo }}</h2>
+<p *ngIf="tarefas.length === 0">Não há tarefas neste status</p>
+
+<div *ngFor="let tarefa of tarefas">
+  <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
+  <button *ngIf="titulo !== 'Feita'" (click)="avancarTarefa(tarefa.id)">Avançar</button>
+</div>

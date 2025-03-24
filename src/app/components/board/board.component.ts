@@ -3,6 +3,7 @@ import { TarefaService } from '../../services/tarefa.service';
 import { Tarefa } from '../../models/tarefa.model';
 import { Status } from '../../models/status.enum';
 import { Categoria } from '../../models/categoria.enum';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class BoardComponent implements OnInit {
   descricao: string = '';
   categoria: Categoria = Categoria.DESENVOLVIMENTO;
 
-  constructor(private tarefaService: TarefaService) {}
+  constructor(private tarefaService: TarefaService, private router: Router) {}
 
   ngOnInit(): void {
     this.atualizarListas();
@@ -44,4 +45,8 @@ export class BoardComponent implements OnInit {
     this.descricao = '';
     this.atualizarListas();
 }
+  verTarefasFeitas() {
+    this.router.navigate(['/tasks-done']);
+  }
 }
+

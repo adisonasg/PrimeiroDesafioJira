@@ -1,0 +1,26 @@
+<div class="tasks-container">
+  <!-- Quadro para Desenvolvimento -->
+  <div class="column">
+    <h2>Desenvolvimento</h2>
+    <ul *ngIf="tarefasDev.length > 0; else noTasksDev">
+      <li *ngFor="let tarefa of tarefasDev">
+        {{ tarefa.descricao }} - {{ tarefa.autor }}
+      </li>
+    </ul>
+    <ng-template #noTasksDev><p>Não há tarefas concluídas.</p></ng-template>
+  </div>
+
+  <!-- Quadro para Inteligência Artificial -->
+  <div class="column">
+    <h2>Inteligência Artificial</h2>
+    <ul *ngIf="tarefasIA.length > 0; else noTasksIA">
+      <li *ngFor="let tarefa of tarefasIA">
+        {{ tarefa.descricao }} - {{ tarefa.autor }}
+      </li>
+    </ul>
+    <ng-template #noTasksIA><p>Não há tarefas concluídas.</p></ng-template>
+  </div>
+</div>
+
+<!-- Botão de Voltar -->
+<a routerLink="/" class="btn">Voltar</a>

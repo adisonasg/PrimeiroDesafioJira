@@ -1,28 +1,26 @@
 <div class="board">
+  
   <div class="column">
-    <h2>A Fazer</h2>
-    <div *ngIf="tarefasAFazer.length === 0">Não há tarefas neste status</div>
-    <div *ngFor="let tarefa of tarefasAFazer">
-      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
-      <button (click)="avancarStatus(tarefa.id)">Avançar</button>
-    </div>
+    <app-task-column
+      titulo="A Fazer"
+      [tarefas]="tarefasAFazer"
+      (avancar)="avancarStatus($event)">
+    </app-task-column>
   </div>
 
   <div class="column">
-    <h2>Em Andamento</h2>
-    <div *ngIf="tarefasEmAndamento.length === 0">Não há tarefas neste status</div>
-    <div *ngFor="let tarefa of tarefasEmAndamento">
-      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
-      <button (click)="avancarStatus(tarefa.id)">Avançar</button>
-    </div>
+    <app-task-column
+      titulo="Em Andamento"
+      [tarefas]="tarefasEmAndamento"
+      (avancar)="avancarStatus($event)">
+    </app-task-column>
   </div>
 
   <div class="column">
-    <h2>Feita</h2>
-    <div *ngIf="tarefasFeitas.length === 0">Não há tarefas neste status</div>
-    <div *ngFor="let tarefa of tarefasFeitas">
-      <p>{{ tarefa.descricao }} - {{ tarefa.autor }}</p>
-    </div>
+    <app-task-column
+      titulo="Feita"
+      [tarefas]="tarefasFeitas">
+    </app-task-column>
   </div>
 
   <div class="tarefa">
@@ -35,3 +33,6 @@
     <button (click)="criarTarefa()">Adicionar</button>
   </div>
 </div>
+
+<button (click)="verTarefasFeitas()">Ver Tarefas Feitas</button>
+

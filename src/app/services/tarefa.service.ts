@@ -45,7 +45,7 @@ export class TarefaService {
       if (tarefa?.status === Status.A_FAZER)
         tarefa.status = Status.EM_ANDAMENTO
 
-      if (tarefa?.status === Status.EM_ANDAMENTO)
+      else if (tarefa?.status === Status.EM_ANDAMENTO)
         tarefa.status = Status.FEITA
       
 
